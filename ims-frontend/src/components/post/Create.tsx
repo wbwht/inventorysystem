@@ -1,7 +1,6 @@
-import { gql, useMutation, useQuery } from '@apollo/client';
-import React, { useState, useEffect } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
-import { useAuth0 } from '../../contexts/auth0-context';
+import { gql, useMutation } from '@apollo/client';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 const MUTATION_ADD_PRODUCT = gql`
   mutation createProduct($title: String!, $description: String, $category: String, $author: String!) {
@@ -12,14 +11,10 @@ const MUTATION_ADD_PRODUCT = gql`
 `;
 
 function Create() : JSX.Element {
-  // let history = useHistory();
-  // const { user, getIdTokenClaims } = useAuth0();
-
   interface IValues {
     [key: string]: any;
   }
 
-  const [author, setAuthor] = useState<string>('');
   const [values, setValues] = useState<IValues>([]);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [loadin, setLoading] = useState<boolean>(false);
@@ -37,10 +32,9 @@ function Create() : JSX.Element {
       title: values.title,
       description: values.description,
       body: values.body,
-      author
     }
   
-    addProduct({ variables: { title: values.title, description: values.description, content: values.body, author: author  } });
+    addProduct({ variables: { title: values.title, description: values.description, content: values.body } });
     const submitSuccess = error ? false : true;
     setSubmitSuccess(submitSuccess);
     setValues({...values, formData});
@@ -87,11 +81,6 @@ function Create() : JSX.Element {
         <div className="form-group col-md-12">
           <label htmlFor="body"> Category </label>
           <input type="text" id="body" onChange={(e) => handleInputChanges(e)} name="body" className="form-control" placeholder="Enter content" />
-        </div>
-
-        <div className="form-group col-md-12">
-          <label htmlFor="author"> Author </label>
-          <input type="text" id="author" defaultValue={author} onChange={(e) => handleInputChanges(e)} name="author" className="form-control" />
         </div>
 
         <div className="form-group col-md-4 pull-right">

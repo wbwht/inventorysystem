@@ -1,8 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 import { Pagination } from '@material-ui/lab';
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth0 } from '../contexts/auth0-context';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const QUERY_PRODUCTS = gql`
   query getallproducts {

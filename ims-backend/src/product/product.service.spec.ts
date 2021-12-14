@@ -1,6 +1,6 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Model, Schema } from 'mongoose';
+import { Model } from 'mongoose';
 import { ProductDocument } from './product.model';
 import { ProductService } from './product.service';
 

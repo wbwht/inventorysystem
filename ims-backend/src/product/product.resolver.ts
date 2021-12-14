@@ -24,20 +24,6 @@ export class ProductResolver {
   async products(
     @Args('filters', { nullable: true }) filters: ListProductInput,
   ) {
-    // console.log(
-    //   'resolver products ' +
-    //     'author: ' +
-    //     filters.author +
-    //     ',' +
-    //     'category: ' +
-    //     filters.category +
-    //     ',' +
-    //     'description: ' +
-    //     filters.description +
-    //     ',' +
-    //     'title: ' +
-    //     filters.title,
-    // );
     return this.productService.getPosts(filters);
   }
 

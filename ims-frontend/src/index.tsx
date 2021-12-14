@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { Auth0Provider } from './contexts/auth0-context';
 import { BrowserRouter } from 'react-router-dom';
 
 import {
@@ -23,11 +22,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <Auth0Provider>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </Auth0Provider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </ApolloProvider>,
     document.getElementById('root')
 );

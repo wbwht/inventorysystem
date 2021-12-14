@@ -17,13 +17,6 @@ export class ProductService {
   ) {}
 
   async getPosts(filters: ListProductInput) {
-    // console.log(
-    //   'filters: ' +
-    //     filters.author +
-    //     filters.category +
-    //     filters.description +
-    //     filters.title,
-    // );
     console.log(filters);
 
     // filtering & search
@@ -39,7 +32,7 @@ export class ProductService {
     }
 
     // pagination
-    if (filters && filters.skip && filters.limit) {
+    if (filters && (filters.skip || filters.limit)) {
       const posts = await this.productModel
         .find({}, null, { skip: filters.skip, limit: filters.limit })
         .exec();

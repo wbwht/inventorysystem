@@ -1,0 +1,91 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthPayload {
+  _id: String!
+  token: String!
+  user: Person!
+}
+
+input CreatePersonInput {
+  email: String!
+  name: String!
+  password: String!
+  products: [String!]!
+}
+
+input CreateProductInput {
+  author: String
+  category: String
+  description: String
+  title: String!
+}
+
+input ListPersonInput {
+  _id: String
+  email: String!
+  name: String
+  password: String!
+  products: [String!]
+}
+
+input ListProductInput {
+  _id: String
+  author: String
+  category: String
+  description: String
+  limit: Float
+  search: String
+  skip: Float
+  title: String
+}
+
+type Mutation {
+  createPerson(payload: CreatePersonInput!): Person!
+  createProduct(payload: CreateProductInput!): Product!
+  deletePerson(_id: String!): Person!
+  deleteProduct(_id: String!): Product!
+  login(email: String!, password: String!): AuthPayload!
+  signup(email: String!, name: String!, password: String!): AuthPayload!
+  updatePerson(payload: UpdatePersonInput!): Person!
+  updateProduct(payload: UpdateProductInput!): Product!
+}
+
+type Person {
+  _id: String!
+  email: String!
+  name: String!
+  password: String!
+  products(populate: Boolean!): [String]!
+}
+
+type Product {
+  _id: String!
+  author: String
+  category: String
+  date_posted: String
+  description: String
+  postedById: String
+  title: String!
+}
+
+type Query {
+  person(_id: String!): Person!
+  persons(filters: ListPersonInput): [Person!]!
+  product(_id: String!): Product!
+  products(filters: ListProductInput): [Product!]!
+}
+
+input UpdatePersonInput {
+  _id: String!
+  name: String
+  products: [String!]
+}
+
+input UpdateProductInput {
+  _id: String!
+  category: String
+  description: String
+  title: String
+}

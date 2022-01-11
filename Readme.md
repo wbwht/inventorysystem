@@ -15,35 +15,35 @@ This is a sample product/inventory management system that has:
 
 <br>
 
-# Run the files
+# Setup
 
 ## Pre-requisites
-- Local mongodb community version 5.0 is installed on computer
+- NodeJS Version 16+
+- Local mongodb community version [5.0.4](https://www.mongodb.com/try/download/community) is installed on computer
 <br> Also, ensure that mongod instances are started. If not, run:
 ```bash
 $ brew services start mongodb-community@5.0
 ```
-- NodeJS Version 16+
 
-## Setup
+## First-time setup
 ```bash
 $ git clone https://github.com/wbwht/inventorysystem.git
 ```
 
 <br>
 
-# Run ims-backend
+# 1. Run ims-backend
 ```bash
 $ cd ims-backend/
 $ npm install
 ```
 
-Add a new .env file and add the following line:
+Add a new .env file to ims-backend root directory and add the following line:
 ```bash
 APP_SECRET=<YOUR_PASSWORD>
 ```
 
-Once done, run the application with this:
+Once done, run the application with:
 ```bash
 $ npm run start:dev
 ```
@@ -52,7 +52,7 @@ $ npm run start:dev
 Go to http://localhost:5000/graphql to run GraphQL queries
 (Note: RESTful API is not enabled0)
 
-### 1. Example GraphQL query to get a page of items
+### 1. Example GraphQL query to get a page of items (first page of 2 items)
 ```bash
 query getallproducts_withpage($pagefilters: ListProductInput) {
   products (filters: $pagefilters){
@@ -86,7 +86,7 @@ query search($searchFilter : ListProductInput) {
   }
 }
 ```
-With query variables set as follows:
+With query variables set as follows (eg. it will list all items with "furniture"):
 ```bash
 {
   "searchFilter": {
@@ -107,7 +107,7 @@ query categoryFilter($categoryFilter : ListProductInput) {
   }
 }
 ```
-With query variables set as follows:
+With query variables set as follows (eg. it will display all items with "Stationery" category):
 ```bash
 {
   "categoryFilter": {
@@ -117,13 +117,14 @@ With query variables set as follows:
 ```
 <br>
 
-# Run ims-frontend
+# 2. Run ims-frontend
 
-Ensure that yarn is already installed:
+Ensure that yarn is already installed. If not, run:
 ```bash
 $ npm install -g yarn
 ```
 
+Run installation as follows:
 
 ```bash
 $ cd ims-frontend/
@@ -133,13 +134,18 @@ $ yarn start
 
 Expected outcome if everything works well:
 
+![Sample Home Page](homepage.png)
+
 <br>
+
+# Others
 
 ## To-do
 
-- [ ] Connect frontend to implement pagination
-- [ ] Connect frontend to implement filtering
-- [ ] Connect frontend to implement searching
+- [ ] Connect frontend to backend to implement pagination
+- [ ] Connect frontend to backend to implement filtering
+- [ ] Connect frontend to backend to implement searching
 - [ ] Complete E2E and unit testing
 
 ## References
+

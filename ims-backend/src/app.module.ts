@@ -18,7 +18,7 @@ import { ConfigModule } from '@nestjs/config';
       playground: true,
       debug: false,
     }),
-    MongooseModule.forRoot('mongodb://localhost/nest-ims-project', {
+    MongooseModule.forRoot('mongodb://127.0.0.1/nest-ims-project', {
       useNewUrlParser: true,
     }),
     PersonModule,

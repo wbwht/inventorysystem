@@ -62,7 +62,7 @@ function Home():JSX.Element {
               </div>
 
               <span className="avatar">
-                <img src={require('../assets/lavax.png')} alt="Profile" />
+                <img src={require('../assets/logo.png')} alt="Profile" />
               </span>
 
               <div className="product-info">

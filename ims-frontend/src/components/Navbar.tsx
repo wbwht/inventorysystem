@@ -7,7 +7,7 @@ function Navbar() {
         <header>
             <div className="container-fluid position-relative no-side-padding">
                 <span className="logo">
-                <img src={require('../assets/lavax.png')} alt="My Avatar" />
+                <img src={require('../assets/logo.png')} alt="My Avatar" />
                 </span>
 
                 <div className="menu-nav-icon" data-nav-menu="#main-menu">
